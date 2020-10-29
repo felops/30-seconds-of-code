@@ -15,6 +15,19 @@ const omit = (obj, arr) =>
     .reduce((acc, key) => ((acc[key] = obj[key]), acc), {});
 ```
 
+A less complex way:
+```js
+const omit = (obj, arr) => {
+  let newObj = {}
+  for (let key in obj) {
+    if(!arr.includes(key)) {
+      newObj[key] = obj[key]
+    }
+  }
+  return newObj
+}
+```
+
 ```js
 omit({ a: 1, b: '2', c: 3 }, ['b']); // { 'a': 1, 'c': 3 }
 ```
